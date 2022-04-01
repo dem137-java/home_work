@@ -100,6 +100,8 @@ public class ArraysTask_2_4 {
         return result;
     }
 
+
+    //вспомогательный метод для печати массивов
     public static void printArray(int[] arr){
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i]+" ");
