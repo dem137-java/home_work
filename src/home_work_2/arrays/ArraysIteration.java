@@ -1,4 +1,6 @@
-package home_work_2.loops;
+package home_work_2.arrays;
+
+import home_work_2.loops.ArraysUtils;
 
 public class ArraysIteration {
     public static void main(String[] args) {
