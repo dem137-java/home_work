@@ -1,8 +1,8 @@
-package home_work_2.loops;
+package home_work_2.arrays;
 
 public class ArraysTask_2_4 {
     public static void main(String[] args) {
-        int[] container = home_work_2.loops.ArraysUtils.arrayRandom(5, 99);
+        int[] container = ArraysUtils.arrayRandom(5, 99);
         printArray(container);
         System.out.println(getSumEvenPositiveElements(container));
         System.out.println(getMaxOfEvenIndex(container));

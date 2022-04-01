@@ -1,12 +1,9 @@
-package home_work_2.loops;
+package home_work_2.arrays;
 
 import java.util.Random;
 import java.util.Scanner;
 
 public class ArraysUtils {
-
-    public static void main(String[] args) {
-    }
 
     /**
      * метод запрашивает у пользователя через консоль размер одномерного массива, а также каждое значение масива, создает массив и помещает значения в ячейки
