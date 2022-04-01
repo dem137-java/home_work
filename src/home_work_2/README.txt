@@ -1,12 +1,14 @@
-Task_1_1_1.java (задание 1.1.1);
-Task1_3.java (задание 1.3);
-Task1_5.java (задание 1.5);
-Task2.java (задание 2);
-Task3.java (задание 3);
-Task4.java (задание 4);
-Task5_ElseIf.java (задание 5, else if);
-Task5_If.java (задание 5, if);
-Task5_Switch.java (задание 5, switch);
-Task6.java (задание 6);
-Task6_2.java (задание 6, другим способом);
-Task7.java (задание 7);
+
+Пакет loops:
+
+Task_1_1_1.java		- задание 1.1.1;
+Task_1_1_2.java 	- задание 1.1.2;
+Task_1_2.java 		- задание 1.2;
+Task_1_3.java 		- задание 1.3;
+Task_1_5.java 		- задание 1.5;
+
+Пакет arrays:
+
+ArraysUtils.java	- задание 2.1;
+ArraysIteration.java	- задание 2.2;
+ArraysTask_2_4.java	- задание 2.4;
