@@ -27,9 +27,9 @@ public class ArraysUtils {
 
     /**
      * метод создает одномерный массив заданной аргументом size длины и заполняет ячейки массива случайными числами от 0 до maxValueExclusion (исключая)
-     * @param size - длина одномерного массива
-     * @param maxValueExclusion - максимальное значение ячейки массива (исключая)
-     * @return - одномерны массив с длиной size и случайными значениями в ячейках
+     * @param size - длина одномерного массива (int)
+     * @param maxValueExclusion - максимальное значение ячейки массива (исключая) (int)
+     * @return - одномерный массив с длиной size и случайными значениями в ячейках
      */
     public static int[] arrayRandom(int size, int maxValueExclusion){
         if (size <= 0) {

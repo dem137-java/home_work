@@ -2,6 +2,10 @@ package home_work_2.utils;
 
 public class SortsUtils {
 
+    /**
+     * метод осуществляет сортировку переданного массива пузырьковым методом
+     * @param arr - одномерный массив значений типа int
+     */
     public static void bubble(int[] arr){
         for (int i=0;i < arr.length-1;i++){
             for (int j = arr.length-1;j>i;j--){
@@ -14,6 +18,10 @@ public class SortsUtils {
         }
     }
 
+    /**
+     * метод осуществлеяет сортировку переданного массива шейкерным методом
+     * @param arr- одномерный массив значений типа int
+     */
     public static void shake(int[] arr){
         int left = 0;                       //левая граница
         int right = arr.length-1;           //правая граница

@@ -8,6 +8,10 @@ public class ArraysIteration {
         arrayPrintReverse(container);
     }
 
+    /**
+     * метод печатает переданный одномерный массив
+     * @param arr- одномерный массив значений типа int
+     */
     public static void arrayPrintAll(int[]arr){
         //перебор массива оператором for
         System.out.println("\nfor");
@@ -36,6 +40,10 @@ public class ArraysIteration {
         while (i<arr.length);
     }
 
+    /**
+     * метод печатает каждый второй элемент переданного массива
+     * @param arr - одномерный массив значений типа int
+     */
     public static void arrayPrintSecond(int[]arr){
         //перебор массива оператором for
         System.out.println("\nfor");
@@ -72,6 +80,10 @@ public class ArraysIteration {
         while (i<arr.length);
     }
 
+    /**
+     * метод печатает переданный одномерный массив в обратном порядке
+     * @param arr - - одномерный массив значений типа int
+     */
     public static void arrayPrintReverse(int[]arr){
         //перебор массива оператором for
         System.out.println("\nfor");
