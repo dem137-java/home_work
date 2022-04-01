@@ -12,3 +12,7 @@ Task_1_5.java 		- задание 1.5;
 ArraysUtils.java	- задание 2.1;
 ArraysIteration.java	- задание 2.2;
 ArraysTask_2_4.java	- задание 2.4;
+
+Пакет sorts:
+bubbleSort.drawio	- задание 3;
+bubbleSort.pdf		- задание 3;
