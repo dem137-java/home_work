@@ -7,9 +7,7 @@ public class Task_1_1_1 {
         String result="";
 
         if (number<=0){
-            System.out.println("Введенное число меньше либо равно 0 и не соответсвует условиям задания");
-        } else if (number>Long.MAX_VALUE){
-            System.out.println("Введеное число превышает допустимый диапазон значений");
+            System.out.println("Введенное число меньше либо равно 0 и не соответствует условиям задания");
         } else if (number==1){
             amount *= number;
             result += number + "*1=" + amount;
@@ -24,7 +22,7 @@ public class Task_1_1_1 {
                 }
                 if (amount<=0){
                     System.out.println("Извините, не могу посчитать такое большое число, в следующий раз попробуйте ввести число поменьше");
-                    System.exit(0);
+                    return;
                 }
             }
         }

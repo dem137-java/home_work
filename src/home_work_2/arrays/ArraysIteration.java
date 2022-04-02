@@ -14,7 +14,8 @@ public class ArraysIteration {
      */
     public static void arrayPrintAll(int[]arr){
         //перебор массива оператором for
-        System.out.println("\nfor");
+        System.out.println("\nПечать всего массива:");
+        System.out.println("for");
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i]+" ");
         }
@@ -46,7 +47,8 @@ public class ArraysIteration {
      */
     public static void arrayPrintSecond(int[]arr){
         //перебор массива оператором for
-        System.out.println("\nfor");
+        System.out.println("\nПечать каждого второго значения массива:");
+        System.out.println("for");
         for (int i = 0; i < arr.length; i+=2) {
             System.out.print(arr[i]+" ");
         }
@@ -86,7 +88,8 @@ public class ArraysIteration {
      */
     public static void arrayPrintReverse(int[]arr){
         //перебор массива оператором for
-        System.out.println("\nfor");
+        System.out.println("\nПечать массива наоборот:");
+        System.out.println("for");
         for (int i = arr.length-1; i >=0; i--) {
             System.out.print(arr[i]+" ");
         }

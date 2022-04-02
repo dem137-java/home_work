@@ -51,7 +51,7 @@ public class ArraysTask_2_4 {
     public static void getTwoMinElements(int[] arr) {
         if (arr.length<2){
             System.out.println("Введенная длина массива не соответствует условиям задачи");
-            System.exit(0);
+            return;
         }
         int min1 = arr[0];
         int min2 = arr[1];

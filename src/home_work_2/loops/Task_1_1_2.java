@@ -6,13 +6,9 @@ public class Task_1_1_2 {
 
     public static long recursion(long n) {
         if (n <= 0) {
-            System.out.println("Введенное число меньше либо равно 0 и не соответсвует условиям задания");
-            System.exit(0);
-        }
-        if (n > Long.MAX_VALUE) {
-            System.out.println("Введеное число превышает допустимый диапазон значений");
-            System.exit(0);
-
+            System.out.println("Введенное число меньше либо равно 0 и не соответствует условиям задания");
+            System.out.println("Введенное число будет принято без учета отрицательного знака");
+            n=Math.abs(n);
         }
         System.out.print(n);
         if (n == 1) {
@@ -30,7 +26,6 @@ public class Task_1_1_2 {
         number = Long.parseLong(args[0]);
         if (recursion(number)<=0) {
             System.out.println("Извините, не могу посчитать такое большое число, в следующий раз попробуйте ввести число поменьше");
-            System.exit(0);
         }else {
             System.out.print(amount);
         }
