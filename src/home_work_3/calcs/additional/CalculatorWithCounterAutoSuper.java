@@ -1,6 +1,8 @@
-package home_work_3.calcs.simple;
+package home_work_3.calcs.additional;
 
-public class CalculatorWithCounterAutoSuper extends CalculatorWithMathExtends{
+import home_work_3.calcs.simple.CalculatorWithMathExtends;
+
+public class CalculatorWithCounterAutoSuper extends CalculatorWithMathExtends {
     private long countOperations;
 
     public long getCountOperations() {

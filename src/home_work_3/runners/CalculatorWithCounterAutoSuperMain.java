@@ -1,7 +1,7 @@
 package home_work_3.runners;
 
 
-import home_work_3.calcs.simple.CalculatorWithCounterAutoSuper;
+import home_work_3.calcs.additional.CalculatorWithCounterAutoSuper;
 
 public class CalculatorWithCounterAutoSuperMain {
     public static void main(String[] args) {
