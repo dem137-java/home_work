@@ -96,15 +96,6 @@ public class CalculatorWithOperator {
         } while ((num - half) != 0);
         return half;
     }
-
-//    public double sqrt22(double a) {
-//        double root = 0.00000001;
-//        while (root * root <= a) root+=0.00000001;
-//        root-=0.00000001;
-//        DecimalFormat df = new DecimalFormat("#.#######");
-//        return Double.parseDouble(df.format(root));
-//    }
-
 }
 
 
