@@ -1,8 +1,20 @@
-package home_work_3.calcs.simple;
+package home_work_3.calcs.additional;
 
-import home_work_3.calcs.api.ICalculator;
+import home_work_3.calcs.simple.CalculatorWithOperator;
 
-public class CalculatorWithOperator implements ICalculator {
+public class CalculatorWithCounterAutoComposite {
+    private long countOperations;
+    private CalculatorWithOperator calc1;
+
+    public CalculatorWithCounterAutoComposite(){
+        this.calc1 = new CalculatorWithOperator();
+    }
+
+    public long getCountOperations() {
+        return countOperations;
+    }
+
+
     /**
      * метод возвращает результат деления числа a на число b
      * @param a число a
@@ -10,8 +22,8 @@ public class CalculatorWithOperator implements ICalculator {
      * @return результат деления
      */
     public double divide(double a, double b) {
-        double c = a / b;
-        return c;
+        countOperations++;
+        return calc1.divide(a,b);
     }
 
     /**
@@ -21,8 +33,8 @@ public class CalculatorWithOperator implements ICalculator {
      * @return результат умножения
      */
     public double multiply(double a, double b) {
-        double c = a * b;
-        return c;
+        countOperations++;
+        return calc1.multiply(a,b);
     }
 
     /**
@@ -32,8 +44,8 @@ public class CalculatorWithOperator implements ICalculator {
      * @return результат сложения
      */
     public double add(double a, double b) {
-        double c = a + b;
-        return c;
+        countOperations++;
+        return calc1.add(a,b);
     }
 
     /**
@@ -43,8 +55,8 @@ public class CalculatorWithOperator implements ICalculator {
      * @return результат вычитания
      */
     public double deduct(double a, double b) {
-        double c = a - b;
-        return c;
+        countOperations++;
+        return calc1.deduct(a,b);
     }
 
     /**
@@ -54,15 +66,8 @@ public class CalculatorWithOperator implements ICalculator {
      * @return результат возведения в степень
      */
     public double pow(double a, int b) {
-        if (b == 0) {
-            return 1.00;
-        } else {
-            double c = 1;
-            for (int i = 0; i < b; i++) {
-                c *= a;
-            }
-            return c;
-        }
+        countOperations++;
+        return calc1.pow(a,b);
     }
 
     /**
@@ -71,11 +76,8 @@ public class CalculatorWithOperator implements ICalculator {
      * @return модуль числа а
      */
     public double abs(double a) {
-        if (a < 0) {
-            return -a;
-        } else {
-            return a;
-        }
+        countOperations++;
+        return calc1.abs(a);
     }
 
     /**
@@ -84,17 +86,7 @@ public class CalculatorWithOperator implements ICalculator {
      * @return квадратный корень из числа a
      */
     public double sqrt(double a){
-        double num;
-        double half = a / 2;
-        do {
-            num = half;
-            half = (num + (a / num)) / 2;
-        } while ((num - half) != 0);
-        return half;
+        countOperations++;
+        return calc1.sqrt(a);
     }
 }
-
-
-
-
-
