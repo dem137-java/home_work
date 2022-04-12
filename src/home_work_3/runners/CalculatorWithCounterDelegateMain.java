@@ -11,9 +11,11 @@ public class CalculatorWithCounterDelegateMain {
         CalculatorWithCounterAutoComposite calcComposite = new CalculatorWithCounterAutoComposite();
         double result = calcComposite.add(4.1,(calcComposite.add(calcComposite.multiply(15,7), calcComposite.pow(calcComposite.divide(28,5),2))));
         System.out.println(toCalc + result);
+        System.out.println("количество операций: "+calcComposite.getCountOperations());
 
         CalculatorWithCounterAutoAgregation calcAgregation = new CalculatorWithCounterAutoAgregation(new CalculatorWithMathCopy());
         result = calcAgregation.add(4.1,(calcAgregation.add(calcAgregation.multiply(15,7), calcAgregation.pow(calcAgregation.divide(28,5),2))));
         System.out.println(toCalc + result);
+        System.out.println("количество операций: "+calcAgregation.getCountOperations());
     }
 }
