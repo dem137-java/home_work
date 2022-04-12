@@ -9,13 +9,11 @@ public class CalculatorWithCounterDelegateMain {
         String toCalc = "4.1 + 15 * 7 + (28 / 5) ^ 2 = ";
 
         CalculatorWithCounterAutoComposite calcComposite = new CalculatorWithCounterAutoComposite();
-        double result = calcComposite.add(4.1,(calcComposite.add(calcComposite.multiply(15,7), calcComposite.pow(28.0/5,2))));
+        double result = calcComposite.add(4.1,(calcComposite.add(calcComposite.multiply(15,7), calcComposite.pow(calcComposite.divide(28,5),2))));
         System.out.println(toCalc + result);
 
         CalculatorWithCounterAutoAgregation calcAgregation = new CalculatorWithCounterAutoAgregation(new CalculatorWithMathCopy());
-        result = calcAgregation.add(4.1,(calcAgregation.add(calcAgregation.multiply(15,7), calcAgregation.pow(28.0/5,2))));
+        result = calcAgregation.add(4.1,(calcAgregation.add(calcAgregation.multiply(15,7), calcAgregation.pow(calcAgregation.divide(28,5),2))));
         System.out.println(toCalc + result);
-
-
     }
 }
