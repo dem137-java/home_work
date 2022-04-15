@@ -10,11 +10,13 @@ public class CalculatorDecoratorMain {
         String toCalc = "4.1 + 15 * 7 + (28 / 5) ^ 2 = ";
         ICalculator calc = new CalculatorWithCounterAutoDecorator(new CalculatorWithMemoryDecorator(new CalculatorWithMathExtends()));
         double result = calc.add(4.1,(calc.add(calc.multiply(15,7), calc.pow(calc.divide(28,5),2))));
+        System.out.println(toCalc + result);
+
         if (calc instanceof CalculatorWithCounterAutoDecorator){
             CalculatorWithCounterAutoDecorator calcDecor = (CalculatorWithCounterAutoDecorator) calc;
+            System.out.println("количество операций: "+ ((CalculatorWithCounterAutoDecorator) calc).getCountOperations());
         }
 
-
-        //пауза здесь
+        //пауза здесь, думаю кк добавить последнее значение памяти.
     }
 }
