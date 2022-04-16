@@ -14,7 +14,7 @@ public class CalculatorDecoratorMain {
 
         if (calc instanceof CalculatorWithCounterAutoDecorator){
             CalculatorWithCounterAutoDecorator calcDecor = (CalculatorWithCounterAutoDecorator) calc;
-            System.out.println("количество операций: "+ ((CalculatorWithCounterAutoDecorator) calc).getCountOperations());
+            System.out.println("количество операций: "+ (calcDecor.getCountOperations()));
         }
 
         //пауза здесь, думаю кк добавить последнее значение памяти.
