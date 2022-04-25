@@ -114,6 +114,11 @@ public class DataContainer<T> {
         }
     }
 
+    /**
+     * метод сортирует объекты помещенные в переданный контейнер объектов DataContainer
+     * @param container контейнер объектов DataContainer
+     * @param <T>обобщенный тип данных (дженерик)
+     */
     public static <T extends Comparable> void sort (DataContainer<T> container){
 
         for (int i=0;i < container.data.length-1;i++) {
@@ -127,18 +132,24 @@ public class DataContainer<T> {
         }
     }
 
-
-//    public static void sort(DataContainer<T> container, Comparator<T> comparator){
-//        for (int i=0;i < container.data.length-1;i++) {
-//            for (int j = container.data.length-1;j>i;j--) {
-//                if (comparator.compare(container.data[j], container.data[j - 1]) < 0) {
-//                    T tmp = container.data[j];
-//                    container.data[j] = container.data[j - 1];
-//                    container.data[j - 1] = tmp;
-//                }
-//            }
-//        }
-//    }
+    /**
+     *метод сортирует объекты, находящиеся в переданном контейнере DataContainer при помощи определенной реализации
+     * сортировки, которая также передается в метод
+     * @param container контейнер c объектами DataContainer
+     * @param comparator реализация интерфейса Comporator (
+     * @param <T> обобщенный тип данных
+     */
+    public static <T> void sort(DataContainer<T> container, Comparator<T> comparator){
+        for (int i=0;i < container.data.length-1;i++) {
+            for (int j = container.data.length-1;j>i;j--) {
+                if (comparator.compare(container.data[j], container.data[j - 1]) < 0) {
+                    T tmp = container.data[j];
+                    container.data[j] = container.data[j - 1];
+                    container.data[j - 1] = tmp;
+                }
+            }
+        }
+    }
 
     /**
      * метод проверяет переданный массив обобщенных данных и возвращает true если в массиве есть свободное место
