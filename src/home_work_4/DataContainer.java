@@ -1,6 +1,7 @@
 package home_work_4;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class DataContainer<T> {
     private T[] data;
@@ -90,6 +91,22 @@ public class DataContainer<T> {
             }
         }
         return result;
+    }
+
+    /**
+     * метод сортирует массив data по возврастанию
+     * @param comparator реализация интефейса Comparator
+     */
+    public void sort(Comparator<T> comparator) {
+        for (int i=0;i < data.length-1;i++) {
+            for (int j = data.length-1;j>i;j--) {
+                if (comparator.compare(data[j], data[j - 1]) < 0) {
+                    T tmp = data[j];
+                    data[j] = data[j - 1];
+                    data[j - 1] = tmp;
+                }
+            }
+        }
     }
 
     /**
