@@ -114,17 +114,18 @@ public class DataContainer<T> {
         }
     }
 
-//    public static void sort (DataContainer<T extends Comparable> container){
-//        for (int i=0;i < container.data.length-1;i++) {
-//            for (int j = container.data.length-1;j>i;j--) {
-//                if (comparator.compare(container.data[j], container.data[j - 1]) < 0) {
-//                    T tmp = container.data[j];
-//                    container.data[j] = container.data[j - 1];
-//                    container.data[j - 1] = tmp;
-//                }
-//            }
-//        }
-//    }
+    public static <T extends Comparable> void sort (DataContainer<T> container){
+
+        for (int i=0;i < container.data.length-1;i++) {
+            for (int j = container.data.length-1;j>i;j--) {
+                if (container.data[j].compareTo(container.data[j - 1])<0) {
+                    T tmp = container.data[j];
+                    container.data[j] = container.data[j - 1];
+                    container.data[j - 1] = tmp;
+                }
+            }
+        }
+    }
 
 
 //    public static void sort(DataContainer<T> container, Comparator<T> comparator){
