@@ -2,8 +2,11 @@ package home_work_4;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Iterator;
+import java.util.Spliterator;
+import java.util.function.Consumer;
 
-public class DataContainer<T> {
+public class DataContainer<T> implements Iterable<T>{
     private T[] data;
 
     DataContainer(T[] item){
@@ -219,5 +222,11 @@ public class DataContainer<T> {
             if (data[i+1]!=null){b.append(", ");}
         }
     }
+
+    @Override
+    public Iterator<T> iterator() {
+        return null; //TODO переопределить метод
+    }
+
 }
 
