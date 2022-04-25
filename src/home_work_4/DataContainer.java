@@ -80,6 +80,11 @@ public class DataContainer<T> {
         }
     }
 
+    /**
+     * метод удаляет ячейку массива с переданным объектом/значением
+     * @param item значение, которое необходимо удалить
+     * @return true - если ячейка удалена, false - если ячейка не удалена
+     */
     public boolean delete(T item) {
         boolean result = false;
         for (int i = 0; i < data.length; i++) {
@@ -108,6 +113,31 @@ public class DataContainer<T> {
             }
         }
     }
+
+//    public static void sort (DataContainer<T extends Comparable> container){
+//        for (int i=0;i < container.data.length-1;i++) {
+//            for (int j = container.data.length-1;j>i;j--) {
+//                if (comparator.compare(container.data[j], container.data[j - 1]) < 0) {
+//                    T tmp = container.data[j];
+//                    container.data[j] = container.data[j - 1];
+//                    container.data[j - 1] = tmp;
+//                }
+//            }
+//        }
+//    }
+
+
+//    public static void sort(DataContainer<T> container, Comparator<T> comparator){
+//        for (int i=0;i < container.data.length-1;i++) {
+//            for (int j = container.data.length-1;j>i;j--) {
+//                if (comparator.compare(container.data[j], container.data[j - 1]) < 0) {
+//                    T tmp = container.data[j];
+//                    container.data[j] = container.data[j - 1];
+//                    container.data[j - 1] = tmp;
+//                }
+//            }
+//        }
+//    }
 
     /**
      * метод проверяет переданный массив обобщенных данных и возвращает true если в массиве есть свободное место
