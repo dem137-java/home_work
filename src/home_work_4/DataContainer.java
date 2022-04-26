@@ -3,8 +3,6 @@ package home_work_4;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
 public class DataContainer<T> implements Iterable<T>{
     private T[] data;
