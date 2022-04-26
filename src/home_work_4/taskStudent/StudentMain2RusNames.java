@@ -7,13 +7,14 @@ import home_work_4.taskStudent.comparators.NameComparator;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
-public class StudentMain {
+public class StudentMain2RusNames {
     public static void main(String[] args) {
         //заполняем коллекцию
         List<Student> studentsCollection = new ArrayList<Student>();
         for (int i = 0; i < 10_000; i++) {
-            studentsCollection.add(new Student(i+1));
+            studentsCollection.add(new Student(i+1, nameRandomCorrect()));
         }
 
         //фильтруем список студентов по возрасту и оценкам
@@ -42,7 +43,6 @@ public class StudentMain {
         printTop10(studentsSorted); // печатаем топ 10 всего списка
         System.out.println("Топ 10 студентов по оценкам каждого возраста:");
         printTop10EachAge(studentsSorted); // печатаем топ 10 каждого возраста
-
     }
 
     /**
@@ -89,13 +89,19 @@ public class StudentMain {
         }
         System.out.println("");
     }
+
+    /**
+     * метод возвращает случайное имя из списка
+     * @return случайное имя
+     */
+    public static String nameRandomCorrect(){
+        String[] names = {"Сергей","Андрей","Валерий", "Василий", "Инокентий", "Радомир", "Вячеслав", "Екатерина", "Валентина", "Светлана", "Юлия", "Авдотья", "Дарья", "Тамара"};
+        return names[ThreadLocalRandom.current().nextInt(0,names.length-1)];
+    }
+
 }
 
 
 
-//    public String nameCorrect(){
-//        String[] names = {"Сергей","Андрей","Валерий", "Василий", "Инокентий", "Радомир", "Вячеслав", "Екатерина", "Валентина", "Светлана", "Юлия", "Авдотья", "Дарья", "Тамара"};
-//
-//    }
 
 
