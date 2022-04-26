@@ -31,7 +31,7 @@ public class StudentMain {
         studentsSorted.sort(new NameComparator());
         printTop10(studentsSorted);
 
-        //сортируем студентов по возрасту и оценкам
+        //сортируем студентов по возрасту и оценкам //TODO
 
 
 
