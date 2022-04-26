@@ -17,7 +17,7 @@ public class Student {
 
     public Student(int number) {
         this.number = number;
-        this.name= nameRandomChaos();
+        this.name= nameRandom();
         this.age = (byte) ThreadLocalRandom.current().nextInt(7,17);
         this.mark = (float) Math.random()*10;
         int isOlimpRnd = ThreadLocalRandom.current().nextInt(0,1);
@@ -28,7 +28,7 @@ public class Student {
         }
     }
 
-        public String nameRandomChaos(){
+        private String nameRandom(){
         String result="";
         int nameRndLength = ThreadLocalRandom.current().nextInt(3,10);
         char[] nameCharRnd = new char[nameRndLength];
@@ -38,7 +38,6 @@ public class Student {
         }
         return result;
     }
-
 
     @Override
     public String toString() {
