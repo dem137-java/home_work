@@ -4,6 +4,9 @@ import java.text.DecimalFormat;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * класс для создания студентов
+ */
 public class Student {
     private int number;
     private String name;
@@ -11,13 +14,21 @@ public class Student {
     private float mark;
     private boolean isOlimp;
 
-    public Student(){
-        this(1);
-    }
-
+    /**
+     * конструктор, принимающий порядковый номер
+     * @param number порядковый номер
+     */
     public Student(int number) {
+        this (number, nameRandom());    }
+
+    /**
+     * конструктор, принимающий порядковый номер и имя студента
+     * @param number порядковый номер
+     * @param name имя студента
+     */
+    public Student(int number,String name) {
         this.number = number;
-        this.name= nameRandom();
+        this.name= name;
         this.age = (byte) ThreadLocalRandom.current().nextInt(7,17);
         this.mark = (float) Math.random()*10;
         int isOlimpRnd = ThreadLocalRandom.current().nextInt(0,1);
@@ -28,7 +39,11 @@ public class Student {
         }
     }
 
-        private String nameRandom(){
+    /**
+     * статический метод, возвращающий случайное имя
+     * @return случайное имя
+     */
+    private static String nameRandom(){
         String result="";
         int nameRndLength = ThreadLocalRandom.current().nextInt(3,10);
         char[] nameCharRnd = new char[nameRndLength];

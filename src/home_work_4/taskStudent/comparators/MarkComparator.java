@@ -1,4 +1,6 @@
-package home_work_4.taskStudent;
+package home_work_4.taskStudent.comparators;
+
+import home_work_4.taskStudent.Student;
 
 import java.util.Comparator;
 
