@@ -3,8 +3,6 @@ package home_work_4;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Iterator;
-import java.util.Spliterator;
-import java.util.function.Consumer;
 
 public class DataContainer<T> implements Iterable<T>{
     private T[] data;
@@ -122,7 +120,7 @@ public class DataContainer<T> implements Iterable<T>{
      * @param container контейнер объектов DataContainer
      * @param <T>обобщенный тип данных (дженерик)
      */
-    public static <T extends Comparable> void sort (DataContainer<T> container){
+    public static <T extends Comparable<T>> void sort (DataContainer<T> container){
 
         for (int i=0;i < container.data.length-1;i++) {
             for (int j = container.data.length-1;j>i;j--) {
