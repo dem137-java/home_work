@@ -28,19 +28,11 @@ public class DataContainerTest {
 
         DataContainer container4 = new DataContainer<String>(new String[]{"Python","Java","Ruby","C"});
         System.out.println(container4);
-        DataContainer.sort(container4);
+        DataContainer.sort(container4, new ComparatorComparable<String>());
         System.out.println(container4);
         container4.delete(0);
         System.out.println(container4);
         container4.delete("Ruby");
         System.out.println(container4);
-
-
-
-
-
-
-
-
     }
 }
