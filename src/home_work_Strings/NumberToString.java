@@ -27,8 +27,8 @@ public class NumberToString {
         String result="";
         String numbers[] = String.valueOf(number).split("\\.");
         numbers[1] = numbers[1].substring(0,2);
-        int beforeComma = Integer.valueOf(numbers[0]);
-        int afterComma = Integer.valueOf(numbers[1]);
+        int beforeComma = Integer.parseInt(numbers[0]);
+        int afterComma = Integer.parseInt(numbers[1]);
         if (number<0&&beforeComma==0){
             result+="минус ";
         }
