@@ -56,9 +56,5 @@ public class NumberToStringTest {
         Assertions.assertEquals("ноль целых одна сотая", obj.toString(0.01));
         Assertions.assertEquals("минус двести шестьдесят четыре целых пятнадцать сотых", obj.toString(-264.15));
         Assertions.assertEquals("минус ноль целых одна сотая", obj.toString(-0.01));
-
-
     }
-
-
 }
