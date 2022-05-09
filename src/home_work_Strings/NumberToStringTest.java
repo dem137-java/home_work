@@ -48,7 +48,17 @@ public class NumberToStringTest {
         Assertions.assertEquals("минус один миллион сто двадцать две тысячи сорок один",obj.toString(-1122041));
         Assertions.assertEquals("минус сто миллионов девятьсот тысяч",obj.toString(-100900000));
     }
+    @Test
+    public void doubleNumberTest() {
+        NumberToString obj = new NumberToString();
+        System.out.println(obj.toString(264.15));
+        Assertions.assertEquals("двести шестьдесят четыре целых пятнадцать сотых", obj.toString(264.15));
+        Assertions.assertEquals("ноль целых одна сотая", obj.toString(0.01));
+        Assertions.assertEquals("минус двести шестьдесят четыре целых пятнадцать сотых", obj.toString(-264.15));
+        Assertions.assertEquals("минус ноль целых одна сотая", obj.toString(-0.01));
 
+
+    }
 
 
 }

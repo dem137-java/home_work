@@ -19,10 +19,35 @@ public class NumberToString {
     private final String[] wordsThousandArray = {"тысяча", "тысячи", "тысяч"};
 
     /**
-     * метод для получения числа прописью
+     * метод для получения вещественного числа прописью
      * @param number число для конвертации в строку
      * @return строка содержащая число прописью
      */
+    public String toString(double number) {
+        String result="";
+        String numbers[] = String.valueOf(number).split("\\.");
+        numbers[1] = numbers[1].substring(0,2);
+        int beforeComma = Integer.valueOf(numbers[0]);
+        int afterComma = Integer.valueOf(numbers[1]);
+        if (number<0&&beforeComma==0){
+            result+="минус ";
+        }
+        result += toString(beforeComma) + " целых " + threeFigToString(afterComma,3);
+        if (afterComma%10==1){
+            result+= " сотая";
+        } else if (afterComma%10==2||afterComma%10==3||afterComma%10==4){
+            result+= " сотые";
+        } else {
+            result+= " сотых";
+        }
+        return result;
+    }
+
+    /**
+         * метод для получения целочисленного числа прописью
+         * @param number число для конвертации в строку
+         * @return строка содержащая число прописью
+         */
     public String toString(int number) {
         String result = "";
         if (number > 999999999 || number < -999999999) {
@@ -46,10 +71,10 @@ public class NumberToString {
      * метод предназначен для получения прописью числа, состоящего из трех цифр
      * @param i сегмент числа из 3-х цифр
      * @param index индекс для определения разряда (0-миллионы,1-тысячи)
-     * @return строка содержащая число прописью с указанием разряда
+     * @return строка содержащая число прописью с указанием разряда (миллионы, тысячи)
      */
     private String threeFigToString(int i, int index) {
-        String subResult = "";
+        String result = "";
         int hundred;
         int ten;
         int unit;
@@ -63,55 +88,56 @@ public class NumberToString {
             unit = (i - hundred * 100) % 10;
 
             //добавляем сотни
-            subResult += hundredsArray[hundred];
+            result += hundredsArray[hundred];
             if (hundred!=0&&(ten!=0||unit!=0)){
-                subResult+=" ";
+                result+=" ";
             }
             //формируем и добавляем десятки и единицы
             if (ten == 1 && unit == 0) {
-                subResult += dozensArray[ten];
+                result += dozensArray[ten];
             }
             if (ten == 1 && unit != 0) {
-                subResult += elevensArray[unit];
+                result += elevensArray[unit];
             }
             if (ten != 1) {
-                subResult += dozensArray[ten];
+                result += dozensArray[ten];
                 if (ten!=0&&unit!=0){
-                    subResult+=" ";
+                    result+=" ";
                 }
-                if (index == 1) {
-                    subResult += figures[1][unit];
+                if (index == 1||index==3) {
+                    result += figures[1][unit];
                 } else {
-                    subResult += figures[0][unit];
+                    result += figures[0][unit];
                 }
             }
             //добавляем слова разрядов - миллионы и тысячи
             if (million!=0&&index == 0) {
                 if (unit == 1) {
-                    subResult += " " + wordsMillionArray[0];
+                    result += " " + wordsMillionArray[0];
                 } else if (unit == 2 | unit == 3 | unit == 4) {
-                    subResult += " " + wordsMillionArray[1];
+                    result += " " + wordsMillionArray[1];
                 } else {
-                    subResult += " " + wordsMillionArray[2];
+                    result += " " + wordsMillionArray[2];
                 }
                 if (thousand!=0){
-                    subResult+= " ";
+                    result+= " ";
                 }
             }
             if (thousand!=0&&index == 1) {
                 if (unit == 1) {
-                    subResult += " " + wordsThousandArray[0];
+                    result += " " + wordsThousandArray[0];
                 } else if (unit == 2 | unit == 3 | unit == 4) {
-                    subResult += " " + wordsThousandArray[1];
+                    result += " " + wordsThousandArray[1];
                 } else {
-                    subResult += " " + wordsThousandArray[2];
+                    result += " " + wordsThousandArray[2];
                 }
                 if (underThousand!=0){
-                    subResult+= " ";
+                    result+= " ";
                 }
             }
-            return subResult;
+            return result;
         }
     }
+
 }
 
