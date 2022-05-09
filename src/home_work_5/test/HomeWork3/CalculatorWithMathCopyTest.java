@@ -1,11 +1,11 @@
 package home_work_5.test.HomeWork3;
 
-import home_work_3.calcs.simple.CalculatorWithOperator;
+import home_work_3.calcs.simple.CalculatorWithMathCopy;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class CalculatorWithOperatorTest {
-    CalculatorWithOperator calc = new CalculatorWithOperator();
+public class CalculatorWithMathCopyTest {
+    CalculatorWithMathCopy calc = new CalculatorWithMathCopy();
 
     @Test
     public void divide (){
