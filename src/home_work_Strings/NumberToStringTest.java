@@ -62,7 +62,14 @@ public class NumberToStringTest {
         NumberToString obj = new NumberToString();
         Assertions.assertEquals("0 недель", obj.toWeek(5));
         Assertions.assertEquals("2 недели", obj.toWeek(14));
+        Assertions.assertEquals("4 недели", obj.toWeek(28));
         Assertions.assertEquals("25 недель", obj.toWeek(177));
         Assertions.assertEquals("1 неделя", obj.toWeek(9));
+    }
+    @Test
+    public void toHoursMinuteSecondMillisecond() {
+        NumberToString obj = new NumberToString();
+        Assertions.assertEquals("02:09:49.001", obj.toHoursMinuteSecondMillisecond(7789001,true));
+        Assertions.assertEquals("2 часа 9 минут 49 секунд 1 миллисекунда", obj.toHoursMinuteSecondMillisecond(7789001,false));
     }
 }

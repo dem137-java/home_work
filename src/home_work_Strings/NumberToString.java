@@ -17,6 +17,12 @@ public class NumberToString {
     private final String[] hundredsArray = {"", "сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот"};
     private final String[] wordsMillionArray = {"миллион", "миллиона", "миллионов"};
     private final String[] wordsThousandArray = {"тысяча", "тысячи", "тысяч"};
+    private final String[][] wordsTime = {
+            {" часов ", " час "," часа "},
+            {" минут ", " минута ", " минуты "},
+            {" секунд "," секунда "," секунды "},
+            {" миллисекунд"," миллисекунда"," миллисекунды"}
+    };
 
     /**
      * метод для получения вещественного числа прописью
@@ -139,6 +145,11 @@ public class NumberToString {
         }
     }
 
+    /**
+     * метод возвращает количество недель в переданном числе дней в формате строки
+     * @param day количество дней
+     * @return строка, содержащая количество недель
+     */
     public String toWeek(int day) {
         int weeks = day / 7;
         String result = String.valueOf(weeks) + " ";
@@ -156,6 +167,119 @@ public class NumberToString {
                 break;
         }
         return result;
+    }
+
+    /**
+     * метод преобразует количество миллисекунд в строку, содержащую количество часов, минут, секунд и миллисекунд
+     * в опредененном формате
+     * "HH:mm:ss.SSS" - при сокращенном формате (где HH - это часы, mm - минуты, ss - секунды, SSS - миллисекунды)
+     * "HH часов mm минут ss секунд SSS миллисекунд" - при полном формате
+     * @param millisecond количество милиссекунд
+     * @param shortFormat true - сокращенный формат, false - полный формат
+     * @return строка, содержащая количество часов, минут, секунд и миллисекунд
+     */
+    public String toHoursMinuteSecondMillisecond(long millisecond, boolean shortFormat) {
+        String result="";
+        int millis = (int) (millisecond%1000);
+        String milliseconds = millisecondsToString(millis);
+        int secsTotal = (int) (millisecond/1000);
+        int secs = secsTotal%60;
+        String seconds = secsMinsHrsToString(secs);
+        int minsTotal = secsTotal/60;
+        int mins = minsTotal%60;
+        String minutes = secsMinsHrsToString(mins);
+        int hrsTotal = minsTotal/60;
+        String hours = secsMinsHrsToString(hrsTotal);
+
+        if (shortFormat){
+            result+=hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+        }else{
+            if(hrsTotal%10==1&& restDiv100NotEqualsTo11_12_13_14(hrsTotal)){
+                result+=hrsTotal + wordsTime[0][1];
+            } else if ((hrsTotal%10==2||hrsTotal%10==3||hrsTotal%10==4)&& restDiv100NotEqualsTo11_12_13_14(hrsTotal)){
+                result+=hrsTotal + wordsTime[0][2];
+            }else {
+                result+=hrsTotal + wordsTime[0][0];
+            }
+            if(mins%10==1&& restDiv100NotEqualsTo11_12_13_14(mins)){
+                result+=mins + wordsTime[1][1];
+            } else if ((mins%10==2||mins%10==3||mins%10==4)&& restDiv100NotEqualsTo11_12_13_14(mins)){
+                result+=mins + wordsTime[1][2];
+            }else {
+                result+=mins + wordsTime[1][0];
+            }
+            if(secs%10==1&& restDiv100NotEqualsTo11_12_13_14(secs)){
+                result+=secs + wordsTime[2][1];
+            } else if ((secs%10==2||secs%10==3||secs%10==4)&& restDiv100NotEqualsTo11_12_13_14(secs)){
+                result+=secs + wordsTime[2][2];
+            }else {
+                result+=secs + wordsTime[2][0];
+            }
+            if(millis%10==1&& restDiv100NotEqualsTo11_12_13_14(millis)){
+                result+=millis + wordsTime[3][1];
+            } else if ((millis%10==2||millis%10==3||millis%10==4)&& restDiv100NotEqualsTo11_12_13_14(millis)){
+                result+=millis + wordsTime[3][2];
+            }else {
+                result+=millis + wordsTime[3][0];
+            }
+        }
+    return result;
+    }
+
+    /**
+     * метод возвращает строку, содержащую количество миллисекунд
+     * @param milliseconds число миллисекунд (int)
+     * @return количество миллисекунд в формате строки
+     */
+    private String millisecondsToString(int milliseconds){
+        String result="";
+        if (String.valueOf(milliseconds).length()==1){
+            result+="00"+milliseconds;
+        } else if (String.valueOf(milliseconds).length()==2){
+            result+="0"+milliseconds;
+        } else {
+            result+=milliseconds;
+        }
+        return result;
+    }
+    /**
+     * метод возвращает строку, содержащую количество секунд или минут или часов
+     * @param i число int секунд или минут или часов
+     * @return количество секунд или минут или часов в формате строки
+     */
+    private String secsMinsHrsToString (int i){
+        String result="";
+        if (String.valueOf(i).length()==1){
+            result+="0"+i;
+        }else {
+            result+=i;
+        }
+        return result;
+    }
+
+    /**
+     * метод возвращает false если остаток от деления числа на 100 равен 11, 12, 13, 14 и true если не равен
+     * @param i число
+     * @return false если остаток от деления числа на 100 равен 11, 12, 13, 14 и true если не равен
+     */
+    private boolean restDiv100NotEqualsTo11_12_13_14(int i){
+        if (i%100==11||i%100==12||i%100==13||i%100==14){
+            return false;
+        } else{
+            return true;
+        }
+    }
+    /**
+     * метод возвращает false если остаток от деления числа на 10 не равен 2, 3, 4 и true если равен
+     * @param i число
+     * @return false если остаток от деления числа на 10 не равен 2, 3, 4 и true если равен
+     */
+    private boolean restDiv10EqualsTo2_3_4(int i){
+        if (i%10==2||i%10==3||i%10==4){
+            return true;
+        } else{
+            return false;
+        }
     }
 
 }
