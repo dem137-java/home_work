@@ -196,28 +196,28 @@ public class NumberToString {
         }else{
             if(hrsTotal%10==1&& restDiv100NotEqualsTo11_12_13_14(hrsTotal)){
                 result+=hrsTotal + wordsTime[0][1];
-            } else if ((hrsTotal%10==2||hrsTotal%10==3||hrsTotal%10==4)&& restDiv100NotEqualsTo11_12_13_14(hrsTotal)){
+            } else if (restDiv10EqualsTo2_3_4(hrsTotal)&& restDiv100NotEqualsTo11_12_13_14(hrsTotal)){
                 result+=hrsTotal + wordsTime[0][2];
             }else {
                 result+=hrsTotal + wordsTime[0][0];
             }
             if(mins%10==1&& restDiv100NotEqualsTo11_12_13_14(mins)){
                 result+=mins + wordsTime[1][1];
-            } else if ((mins%10==2||mins%10==3||mins%10==4)&& restDiv100NotEqualsTo11_12_13_14(mins)){
+            } else if (restDiv10EqualsTo2_3_4(mins)&& restDiv100NotEqualsTo11_12_13_14(mins)){
                 result+=mins + wordsTime[1][2];
             }else {
                 result+=mins + wordsTime[1][0];
             }
             if(secs%10==1&& restDiv100NotEqualsTo11_12_13_14(secs)){
                 result+=secs + wordsTime[2][1];
-            } else if ((secs%10==2||secs%10==3||secs%10==4)&& restDiv100NotEqualsTo11_12_13_14(secs)){
+            } else if (restDiv10EqualsTo2_3_4(secs)&& restDiv100NotEqualsTo11_12_13_14(secs)){
                 result+=secs + wordsTime[2][2];
             }else {
                 result+=secs + wordsTime[2][0];
             }
             if(millis%10==1&& restDiv100NotEqualsTo11_12_13_14(millis)){
                 result+=millis + wordsTime[3][1];
-            } else if ((millis%10==2||millis%10==3||millis%10==4)&& restDiv100NotEqualsTo11_12_13_14(millis)){
+            } else if (restDiv10EqualsTo2_3_4(millis)&& restDiv100NotEqualsTo11_12_13_14(millis)){
                 result+=millis + wordsTime[3][2];
             }else {
                 result+=millis + wordsTime[3][0];
@@ -281,6 +281,5 @@ public class NumberToString {
             return false;
         }
     }
-
 }
 
