@@ -139,5 +139,24 @@ public class NumberToString {
         }
     }
 
+    public String toWeek(int day) {
+        int weeks = day / 7;
+        String result = String.valueOf(weeks) + " ";
+        switch (weeks) {
+            case 1:
+                result += "неделя";
+                break;
+            case 2:
+            case 3:
+            case 4:
+                result += "недели";
+                break;
+            default:
+                result += "недель";
+                break;
+        }
+        return result;
+    }
+
 }
 

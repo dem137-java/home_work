@@ -56,6 +56,13 @@ public class NumberToStringTest {
         Assertions.assertEquals("минус двести шестьдесят четыре целых пятнадцать сотых", obj.toString(-264.15));
         Assertions.assertEquals("минус ноль целых одна сотая", obj.toString(-0.01));
         Assertions.assertEquals("минус тридцать две тысячи восемьсот шестьдесят пять целых двадцать три сотые",obj.toString(-32865.23));
-
+    }
+    @Test
+    public void toWeekTest() {
+        NumberToString obj = new NumberToString();
+        Assertions.assertEquals("0 недель", obj.toWeek(5));
+        Assertions.assertEquals("2 недели", obj.toWeek(14));
+        Assertions.assertEquals("25 недель", obj.toWeek(177));
+        Assertions.assertEquals("1 неделя", obj.toWeek(9));
     }
 }
