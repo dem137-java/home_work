@@ -38,9 +38,21 @@ public class WarAndPeace {
         return Files.readString(filePath);
     }
 
+    public Set<String> textToSetBySpace (String text){
+        text = textEdit(text);
+        Set<String> strSet = new TreeSet<>();
+        String [] strArr = text.split(" ");
+        Collections.addAll(strSet, strArr);
+        return strSet;
+    }
+
+    public String textEdit (String text){
+        return text.replaceAll("[\\p{Punct}&&[^-]]+|\\s{2,}|-{2,}"," ");
+    }
+
     public Set<String> textToSet (String text){
         Set<String> uniqueWords = new TreeSet<>();
-        Pattern p = Pattern.compile("([а-яА-Я])+");
+        Pattern p = Pattern.compile("[а-яА-Я]+|\\w+|[0-9]|[а-яА-Я]+[-][а-яА-Я]+");
         Matcher m = p.matcher(text);
         while (m.find()) {
             uniqueWords.add(m.group());

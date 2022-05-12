@@ -5,9 +5,12 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Set;
+import java.util.regex.Pattern;
 
 public class WarAndPeaceTest {
     private String fileNameWork = "\\upload\\Java\\projects\\JD1\\home_work\\src\\home_work_6\\text22.txt";
+    private String fileNameHome = "\\JAVA\\Projects\\JD1\\HomeWork\\src\\home_work_6\\text.txt";
 
     @Test
     public void readFileBufferedReader() throws IOException {
@@ -34,6 +37,39 @@ public class WarAndPeaceTest {
     @Test
     public void textToSet () throws IOException {
         WarAndPeace book = new WarAndPeace();
-        System.out.println(book.textToSet(book.readFileStrings(fileNameWork)));
+        Set<String> set = book.textToSet(book.readFileStrings(fileNameHome));
+        System.out.println(set);
+        System.out.println(set.size());
     }
+    @Test
+    public void patternTest(){
+        System.out.println(Pattern.matches("([а-яА-Я]+)[-]([а-яА-Я]+)","по-белорусски"));
+        System.out.println(Pattern.matches("[.,:;'\"?!<>/{}|*%\\t]+|\\s{2,}|-{2}","  "));
+        System.out.println(Pattern.matches("[\\p{Punct}&&[^-]]+|\\s{2,}|-{2,}","--"));
+        System.out.println(Pattern.matches("[а-яА-Я]+|\\w+|[0-9]|[а-яА-Я]+-[а-яА-Я]+","по-белорусски"));
+
+    }
+    @Test
+    public void textEdit(){
+        WarAndPeace book = new WarAndPeace();
+        try {
+            System.out.println(book.textEdit(book.readFileStrings(fileNameHome)));
+        }catch (Exception e){
+            System.out.println("плохо все");
+        }
+    }
+    @Test
+    public void textToSetBySpace (){
+        WarAndPeace book = new WarAndPeace();
+        try {
+            Set <String> set = book.textToSetBySpace(book.readFileStrings(fileNameHome));
+            System.out.println(set);
+            System.out.println(set.size());
+        }catch (Exception e){
+            System.out.println("плохо все");
+        }
+        System.out.println();
+
+    }
+
 }
