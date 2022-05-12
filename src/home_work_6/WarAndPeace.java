@@ -1,9 +1,11 @@
-package home_work_5;
+package home_work_6;
 
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Scanner;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class WarAndPeace {
 
@@ -35,5 +37,21 @@ public class WarAndPeace {
         Path filePath = Path.of(fileName);
         return Files.readString(filePath);
     }
+
+    public Set<String> textToSet (String text){
+        Set<String> uniqueWords = new TreeSet<>();
+        Pattern p = Pattern.compile("([а-яА-Я])+");
+        Matcher m = p.matcher(text);
+        while (m.find()) {
+            uniqueWords.add(m.group());
+        }
+        return uniqueWords;
+    }
+
+//    public Set<String> uniqueWords (String text){
+//        Set <String> words = new TreeSet<String>(String.CASE_INSENSITIVE_ORDER);
+//        words.addAll()
+//
+//    } return
 }
 
