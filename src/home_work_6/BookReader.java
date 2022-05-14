@@ -7,6 +7,9 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * класс позволяет прочитать текстовый файл, преобразовать его в коллекции
+ */
 public class BookReader {
 
     /**
@@ -18,7 +21,7 @@ public class BookReader {
     public List <Map.Entry<String, Integer>> topWords (String filePath, int n){
         Map <String, Integer> map = fileToMap(filePath);
         List <Map.Entry<String, Integer>> mapList = new ArrayList(map.entrySet());
-        Collections.sort(mapList,new Comparator<Map.Entry<String, Integer>>(){
+        mapList.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 return o2.getValue().compareTo(o1.getValue());
@@ -118,11 +121,17 @@ public class BookReader {
      * метод считывает файл и возвращает его в виде строки (Files.readString)
      * @param filePath путь к файлу
      * @return теств в виде строки
-     * @throws IOException исключение
      */
-    private String readFileStrings(String filePath) throws IOException {
+    public String readFileStrings(String filePath) {
         Path path = Path.of(filePath);
-        return Files.readString(path);
+        String text = "";
+        try {
+            text = Files.readString(path);
+        } catch (IOException e) {
+            System.out.println("Извините, возникла ошибка...");
+            e.printStackTrace();
+        }
+        return text;
     }
 
     /**
@@ -162,8 +171,8 @@ public class BookReader {
     }
 
     /**
-     * метод заменяет в переданной строке текста все знаки препинания (!"#$%&'()*+,./:;<=>?@[\]^_`{|}~)
-     * кроме одинарного дефиса (-), а также множественный пробел и множественный дефис (2 и более раз) на одинарный пробел
+     * метод заменяет в переданной строке текста все знаки препинания (!"#$%&'()*+,./:;<=>?@[\]^_`{|}~
+     * кроме одинарного дефиса (-)), а также множественный пробел и множественный дефис (2 и более раз) на одинарный пробел
      * @param text строка текста
      * @return обработанная строка текста
      */

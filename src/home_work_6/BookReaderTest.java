@@ -80,7 +80,7 @@ public class BookReaderTest {
     @Test
     public void searchTest (){
         EasySearch search = new EasySearch();
-        Assertions.assertEquals(2,search.search("Привет, как твои дела? как настроение? Как родители?", "hello"));
+        Assertions.assertEquals(0,search.searchAtFile(fileNameWork, " как "));
     }
 
 
