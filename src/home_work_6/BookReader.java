@@ -10,10 +10,33 @@ import java.util.regex.Pattern;
 public class BookReader {
 
     /**
-     * метод считывает файл, разбивает его на уникальные строковые элементы (слова) и возвращает множество (set) уникальных
-     * строковых элементов (слов)
+     * метод возвращает список слов заданной длины (int) с количеством их употреблений в текстовом файле
      * @param filePath путь к файлу
-     * @return множество уникальных строковых элементов (слов)
+     * @param n количество позиций для вывода
+     * @return список слов, отсортированный по их количеству в текстовом файле
+     */
+    public List <Map.Entry<String, Integer>> topWords (String filePath, int n){
+        Map <String, Integer> map = fileToMap(filePath);
+        List <Map.Entry<String, Integer>> mapList = new ArrayList(map.entrySet());
+        Collections.sort(mapList,new Comparator<Map.Entry<String, Integer>>(){
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+        if (n<=mapList.size()) {
+            return mapList.subList(0, n);
+        } else {
+            System.out.println("Максимальное значение уникальных элементов: " + mapList.size());
+            return mapList.subList(0,mapList.size());
+        }
+    }
+
+    /**
+     * метод считывает текстовый файл, разбивает его на уникальные строковые элементы (слова) и возвращает множество (Set)
+     * уникальных строковых элементов (слов)
+     * @param filePath путь к файлу
+     * @return множество (Set) уникальных строковых элементов (слов)
      */
     public Set <String> fileToSet (String filePath){
         Set <String> strSet = new TreeSet<String>();
@@ -27,12 +50,12 @@ public class BookReader {
     }
 
     /**
-     * метод считывает файл, разбивает его на уникальные строковые элементы (слова) и возвращает Map в котором в качестве
+     * метод считывает текстовый файл, разбивает его на уникальные строковые элементы (слова) и возвращает Map в котором в качестве
      * ключа используется строка, а в качестве значения - количество данной строки в переданном массиве
      * @param filePath путь к файлу
-     * @return
+     * @return Map с ключом-строкой, значением - количество данной строки в переданном массиве
      */
-    public Map <String, Integer> fileToMap (String filePath){
+    private Map <String, Integer> fileToMap (String filePath){
         Map <String, Integer> strMap= new HashMap<String, Integer>();
         try {
             strMap = stringsToMap(readEditBreakToWords(filePath));

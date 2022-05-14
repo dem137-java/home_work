@@ -1,5 +1,6 @@
 package home_work_6;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.regex.Pattern;
@@ -69,6 +70,17 @@ public class BookReaderTest {
     @Test
     public void printSetAndSize(){
         BookReader book = new BookReader();
+    }
+
+    @Test
+    public void printMap(){
+        BookReader book = new BookReader();
+        System.out.println(book.topWords(fileNameWork,50000));
+    }
+    @Test
+    public void searchTest (){
+        EasySearch search = new EasySearch();
+        Assertions.assertEquals(2,search.search("Привет, как твои дела? как настроение? Как родители?", "hello"));
     }
 
 
