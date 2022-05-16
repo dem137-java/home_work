@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
 public class BookReader {
 
     /**
-     * метод возвращает список слов заданной длины (int) с количеством их употреблений в текстовом файле
+     * метод возвращает отсортированный список слов заданной длины (int) с количеством их употреблений в текстовом файле
      * @param filePath путь к файлу
      * @param n количество позиций для вывода
      * @return список слов, отсортированный по их количеству в текстовом файле
@@ -30,7 +30,6 @@ public class BookReader {
         if (n<=mapList.size()) {
             return mapList.subList(0, n);
         } else {
-            System.out.println("Максимальное значение уникальных элементов: " + mapList.size());
             return mapList.subList(0,mapList.size());
         }
     }
@@ -42,13 +41,7 @@ public class BookReader {
      * @return множество (Set) уникальных строковых элементов (слов)
      */
     public Set <String> fileToSet (String filePath){
-        Set <String> strSet = new TreeSet<String>();
-        try {
-            strSet = stringsToSet(readEditBreakToWords(filePath));
-        } catch (IOException e) {
-            System.out.println("Что-то пошло не так...");
-            e.printStackTrace();
-        }
+        Set <String> strSet = stringsToSet(readEditBreakToWords(filePath));
         return strSet;
     }
 
@@ -59,23 +52,31 @@ public class BookReader {
      * @return Map с ключом-строкой, значением - количество данной строки в переданном массиве
      */
     private Map <String, Integer> fileToMap (String filePath){
-        Map <String, Integer> strMap= new HashMap<String, Integer>();
-        try {
-            strMap = stringsToMap(readEditBreakToWords(filePath));
-        } catch (IOException e) {
-            System.out.println("Что-то пошло не так...");
-            e.printStackTrace();
-        }
+        Map <String, Integer> strMap=stringsToMap(readEditBreakToWords(filePath));
         return strMap;
+    }
+
+    /**
+     * метод формирует множество уникальных слов в переданном тексте
+     * @param text тект
+     * @return множество уникальных слов
+     */
+    private Set<String> textToSetMatcher (String text){
+        Set<String> uniqueWords = new TreeSet<>();
+        Pattern p = Pattern.compile("[а-яА-Я]+|\\w+|[0-9]|[а-яА-Я]+-[а-яА-Я]+");
+        Matcher m = p.matcher(text);
+        while (m.find()) {
+            uniqueWords.add(m.group());
+        }
+        return uniqueWords;
     }
 
     /**
      * метод делегирует чтение, редактирование и разбивку текста на слова другим методам, возвращает массив строк (слов)
      * @param filePath путь к файлу
      * @return массив строк (слов)
-     * @throws IOException исключение
      */
-    private String [] readEditBreakToWords (String filePath) throws IOException {
+    private String [] readEditBreakToWords (String filePath) {
         String text = readFileStrings(filePath);
         text = textEdit(text);
         return textToWordsBySpace(text);
@@ -85,19 +86,21 @@ public class BookReader {
      * метод считывает файл и возвращает его в виде строки (BufferedReader)
      * @param filePath - путь к файлу
      * @return весь текст в виде строки
-     * @throws IOException исключение
      */
-    private String readFileBufferedReader(String filePath) throws IOException {
-        BufferedReader in = new BufferedReader(new FileReader(filePath));
+    private String readFileBufferedReader(String filePath) {
         StringBuilder builder = new StringBuilder();
         String str = null;
-        do {
-            str = in.readLine();
-            if(str != null){
-                builder.append(str).append("\n");
-            }
-        } while (str != null);
-        in.close();
+        try (BufferedReader in = new BufferedReader(new FileReader(filePath))) {
+            do {
+                str = in.readLine();
+                if (str != null) {
+                    builder.append(str).append("\n");
+                }
+            } while (str != null);
+        } catch (IOException e) {
+            System.out.println("Извините, возникла ошибка ввода/вывода...");
+            e.printStackTrace();
+        }
         return builder.toString();
     }
 
@@ -105,14 +108,17 @@ public class BookReader {
      * метод считывает файл и возвращает его в виде строки (Scanner)
      * @param filePath путь к файлу
      * @return текст в виде строки
-     * @throws FileNotFoundException исключение
      */
-    private String readFileScanner(String filePath) throws FileNotFoundException {
+    private String readFileScanner(String filePath) {
         File file = new File(filePath);
-        Scanner scanner = new Scanner(file);
         StringBuilder builder = new StringBuilder();
-        while(scanner.hasNextLine()) {
-            builder.append(scanner.nextLine()).append("\n");
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNextLine()) {
+                builder.append(scanner.nextLine()).append("\n");
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("Извините, файл не найден");
+            e.printStackTrace();
         }
         return builder.toString();
     }
@@ -122,13 +128,13 @@ public class BookReader {
      * @param filePath путь к файлу
      * @return теств в виде строки
      */
-    public String readFileStrings(String filePath) {
+    private String readFileStrings(String filePath) {
         Path path = Path.of(filePath);
         String text = "";
         try {
             text = Files.readString(path);
         } catch (IOException e) {
-            System.out.println("Извините, возникла ошибка...");
+            System.out.println("Извините, возникла ошибка ввода/вывода...");
             e.printStackTrace();
         }
         return text;
@@ -177,22 +183,8 @@ public class BookReader {
      * @return обработанная строка текста
      */
     private String textEdit (String text){
-        return text.replaceAll("[\\p{Punct}&&[^-]]+|\\s{2,}|-{2,}"," ");
+        return text.replaceAll("[\\p{Punct}&&[^-]]+|\\s{2,}|-{2,}|\n|\t"," ");
     }
 
-    /**
-     * метод формирует множество уникальных слов в переданном тексте
-     * @param text тект
-     * @return множество уникальных слов
-     */
-    private Set<String> textToSetMatcher (String text){
-        Set<String> uniqueWords = new TreeSet<>();
-        Pattern p = Pattern.compile("[а-яА-Я]+|\\w+|[0-9]|[а-яА-Я]+-[а-яА-Я]+");
-        Matcher m = p.matcher(text);
-        while (m.find()) {
-            uniqueWords.add(m.group());
-        }
-        return uniqueWords;
-    }
 }
 
