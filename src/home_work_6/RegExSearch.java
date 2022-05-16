@@ -34,7 +34,7 @@ public class RegExSearch implements ISearchEngine {
     public long search(String text, String word) {
         long count = 0;
         text = textEdit(text);
-        Pattern p = Pattern.compile(word);
+        Pattern p = Pattern.compile(word, Pattern.CASE_INSENSITIVE&Pattern.UNICODE_CASE);
         Matcher m = p.matcher(text);
         while (m.find()) {
             count++;
@@ -66,7 +66,8 @@ public class RegExSearch implements ISearchEngine {
      * @return обработанная строка текста
      */
     private String textEdit (String text){
-        return text.replaceAll("[\\p{Punct}&&[^-]]+|-{2,}|\n|\t|\\s{2,}"," ");
+        text = text.replaceAll("[\\p{Punct}&&[^-]]+|-{2,}|\n|\t"," ");
+        return text.replaceAll("\\s{2,}", " ");
     }
 
 

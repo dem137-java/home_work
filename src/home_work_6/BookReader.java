@@ -183,7 +183,8 @@ public class BookReader {
      * @return обработанная строка текста
      */
     private String textEdit (String text){
-        return text.replaceAll("[\\p{Punct}&&[^-]]+|\\s{2,}|-{2,}|\n|\t"," ");
+        text = text.replaceAll("[\\p{Punct}&&[^-]]+|-{2,}|\n|\t"," ");
+        return text.replaceAll("\\s{2,}", " ");
     }
 
 }
