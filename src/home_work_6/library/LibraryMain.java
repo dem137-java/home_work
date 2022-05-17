@@ -1,6 +1,9 @@
 package home_work_6.library;
 
-import home_work_6.search_engines.EasySearch;
+import home_work_6.api.ISearchEngine;
+import home_work_6.decorators.SearchEngineCaseNormalizer;
+import home_work_6.decorators.SearchEnginePunctuationNormalizer;
+import home_work_6.search_engines.RegExSearch;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -9,6 +12,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
 
+/**
+ * класс позволяет выводить список файлов в заданной пользователем директории, а также осуществлять поиск слов в выбранном
+ * файле заданной директории
+ */
 public class LibraryMain {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
@@ -38,7 +45,7 @@ public class LibraryMain {
                             word = console.nextLine();
                             if (!word.equals("0")) {
                                 String text = readFileStrings(filePath);
-                                EasySearch searchEngine = new EasySearch();
+                                ISearchEngine searchEngine = new SearchEnginePunctuationNormalizer(new SearchEngineCaseNormalizer(new RegExSearch()));
                                 long count = searchEngine.search(text, word);
                                 String record = fileName + " - " + word + " - " +count;
                                 writer.write(record+"\n");

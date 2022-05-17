@@ -3,3 +3,10 @@ WarAndPeace.txt - мир - 33
 WarAndPeace.txt - как - 2649
 avidreaders.ru__prestuplenie-i-nakazanie-dr-izd.txt - мир - 7
 avidreaders.ru__prestuplenie-i-nakazanie-dr-izd.txt - война - 2
+Bitva_zhelanij.txt - мир - 2
+Bitva_zhelanij.txt - война - 0
+Bitva_zhelanij.txt - желание - 14
+Bitva_zhelanij.txt - битва - 2
+WarAndPeace.txt - мир - 33
+WarAndPeace.txt - война - 52
+WarAndPeace.txt - и - 14600
