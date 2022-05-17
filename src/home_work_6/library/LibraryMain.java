@@ -19,9 +19,8 @@ public class LibraryMain {
             System.out.println("Извините, директория не существует...");
         } else {
             File result = new File("C:/upload/Java/projects/JD1/home_work/src/home_work_6/library/result.txt");
-            try {
-                FileWriter writer = new FileWriter(result, true);
-                int fileNo=0;
+            try (FileWriter writer = new FileWriter(result, true)) {
+                int fileNo;
                 do {
                     System.out.println("Выберите файл из списка ниже, введите номер файла либо 0 для выхода: ");
                     String[] listOfFiles = directory.list();
@@ -32,16 +31,17 @@ public class LibraryMain {
                     if (fileNo!=0){
                         String fileName = listOfFiles[fileNo - 1];
                         String filePath = directory.getAbsolutePath() + "\\" + fileName;
-                        String word="";
+                        String word;
                         do {
                             System.out.print("Введите слово для поиска либо 0 для выхода из меню: ");
+                            console = new Scanner(System.in);
                             word = console.nextLine();
-                            if (!word.equals("")) {
+                            if (!word.equals("0")) {
                                 String text = readFileStrings(filePath);
                                 EasySearch searchEngine = new EasySearch();
                                 long count = searchEngine.search(text, word);
                                 String record = fileName + " - " + word + " - " +count;
-                                writer.write(record);
+                                writer.write(record+"\n");
                                 System.out.println("слово "+word+" было найдено "+count+" раз");
                             }
                         } while (!word.equals("0"));
