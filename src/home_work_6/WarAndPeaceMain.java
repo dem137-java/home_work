@@ -1,6 +1,8 @@
 package home_work_6;
 
 import home_work_6.api.ISearchEngine;
+import home_work_6.decorators.SearchEngineCaseNormalizer;
+import home_work_6.decorators.SearchEnginePunctuationNormalizer;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -23,45 +25,58 @@ public class WarAndPeaceMain {
         EasySearch easySearch = new EasySearch();
         System.out.println("EasySearch");
         System.out.println("война: " +easySearch.search(text, "война") + " раз");
-        System.out.println("и: " + easySearch.search(text, " и ") + " раз");
+        System.out.println("и: " + easySearch.search(text, "и") + " раз");
         System.out.println("мир: " +easySearch.search(text,"мир") + " раз");
         System.out.println("----------------");
 
         RegExSearch regExSearch = new RegExSearch();
         System.out.println("RegExSearch");
         System.out.println("война: " +regExSearch.search(text, "война") + " раз");
-        System.out.println("и: " + regExSearch.search(text, " и ") + " раз");
+        System.out.println("и: " + regExSearch.search(text, "и") + " раз");
         System.out.println("мир: " +regExSearch.search(text,"мир") + " раз");
         System.out.println("----------------");
 
         ISearchEngine searchEngine = new SearchEngineCaseNormalizer(new RegExSearch());
         System.out.println("SearchEngineCaseNormalizer - RegExSearch");
         System.out.println("война: " +searchEngine.search(text, "ВОЙНА") + " раз");
-        System.out.println("и: " + searchEngine.search(text, " И ") + " раз");
+        System.out.println("и: " + searchEngine.search(text, "И") + " раз");
         System.out.println("мир: " +searchEngine.search(text,"МИР") + " раз");
         System.out.println("----------------");
 
         searchEngine = new SearchEngineCaseNormalizer(new EasySearch());
         System.out.println("SearchEngineCaseNormalizer - EasySearch");
         System.out.println("война: " +searchEngine.search(text, "ВОЙНА") + " раз");
-        System.out.println("и: " + searchEngine.search(text, " И ") + " раз");
+        System.out.println("и: " + searchEngine.search(text, "И") + " раз");
         System.out.println("мир: " +searchEngine.search(text,"МИР") + " раз");
         System.out.println("----------------");
 
-        searchEngine = new SearchEngineCaseNormalizer(new RegExSearch());
-        System.out.println("SearchEngineCaseNormalizer - RegExSearch");
-        System.out.println("война: " +searchEngine.search(text, "ВОЙНА") + " раз");
-        System.out.println("и: " + searchEngine.search(text, " И ") + " раз");
-        System.out.println("мир: " +searchEngine.search(text,"МИР") + " раз");
+        searchEngine = new SearchEnginePunctuationNormalizer(new RegExSearch());
+        System.out.println("SearchEnginePunctuationNormalizer - RegExSearch");
+        System.out.println("война: " +searchEngine.search(text, "война") + " раз");
+        System.out.println("и: " + searchEngine.search(text, "и") + " раз");
+        System.out.println("мир: " +searchEngine.search(text,"мир") + " раз");
         System.out.println("----------------");
 
-        searchEngine = new SearchEngineCaseNormalizer(new EasySearch());
-        System.out.println("SearchEngineCaseNormalizer - EasySearch");
-        System.out.println("война: " +searchEngine.search(text, "ВОЙНА") + " раз");
-        System.out.println("и: " + searchEngine.search(text, " И ") + " раз");
-        System.out.println("мир: " +searchEngine.search(text,"МИР") + " раз");
+        searchEngine = new SearchEnginePunctuationNormalizer(new EasySearch());
+        System.out.println("SearchEnginePunctuationNormalizer - EasySearch");
+        System.out.println("война: " +searchEngine.search(text, "война") + " раз");
+        System.out.println("и: " + searchEngine.search(text, "и") + " раз");
+        System.out.println("мир: " +searchEngine.search(text,"мир") + " раз");
         System.out.println("----------------");
 
+        searchEngine = new SearchEnginePunctuationNormalizer(new SearchEngineCaseNormalizer(new RegExSearch()));
+        System.out.println("Fully Decorated - RegExSearch");
+        System.out.println("война: " +searchEngine.search(text, "война") + " раз");
+        System.out.println("и: " + searchEngine.search(text, "и") + " раз");
+        System.out.println("мир: " +searchEngine.search(text,"мир") + " раз");
+        System.out.println("----------------");
+
+        searchEngine = new SearchEnginePunctuationNormalizer(new SearchEngineCaseNormalizer(new EasySearch()));
+        System.out.println("Fully Decorated - EasySearch");
+        System.out.println("война: " +searchEngine.search(text, "война") + " раз");
+        System.out.println("и: " + searchEngine.search(text, "и") + " раз");
+        System.out.println("мир: " +searchEngine.search(text,"мир") + " раз");
+        System.out.println("----------------");
     }
 
     private static String readFileStrings(String filePath) {

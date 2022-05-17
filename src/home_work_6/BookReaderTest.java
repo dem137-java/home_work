@@ -83,5 +83,29 @@ public class BookReaderTest {
 //        System.out.println(search.textEdit(search.readFileStrings(fileNameWork)));;
 //    }
 
+//    @Test
+//    public void regex(){
+//        long count = 0;
+//        String text = "Привет, как дела, Акакиевич. как";
+//        Pattern p = Pattern.compile("как");
+//        Matcher m = p.matcher(text);
+//        while (m.find()) {
+//            char charBefore = 0;
+//            char charAfter = 0;
+//            if (m.start()==0) {
+//                charBefore = '!';
+//            } else {
+//                charBefore = text.charAt(m.start()-1);
+//            }
+//            if (m.hitEnd()){
+//                charAfter = '!';
+//            } else {
+//                charAfter = text.charAt(m.end());
+//            }
+//            if (!Character.isLetterOrDigit(charBefore)&&!Character.isLetterOrDigit(charAfter)) {
+//                count++;
+//            }        }
+//        return count;
+//    }
 
 }
