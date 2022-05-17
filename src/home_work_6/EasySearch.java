@@ -12,17 +12,6 @@ import java.nio.file.Path;
 public class EasySearch implements ISearchEngine {
 
     /**
-     * метод считает совпадения заданной строки в переданном текстовом файле (в формате строки)
-     * @param filePath путь к текстовому файлу
-     * @param word строка, совпадения с которой необходимо найти
-     * @return количество совпадений строки
-     */
-    public long searchAtFile (String filePath, String word){
-        String text = readFileStrings(filePath);
-        return search(text,word);
-    }
-
-    /**
      * метод осуществляет поиск заданной строки в переданном тексте и возвращает количество совпадений
      * @param text тест в котором необходимо провести поиск
      * @param word строка, совпадения с которой нужно посчитать
@@ -31,7 +20,7 @@ public class EasySearch implements ISearchEngine {
     @Override
     public long search(String text, String word) {
         long count = 0;
-        text = textEdit(text);
+        //text = textEdit(text);
         int startIndex = text.indexOf(word);
         while (startIndex >= 0) {
             count++;
@@ -57,13 +46,13 @@ public class EasySearch implements ISearchEngine {
         return text;
     }
 
-    private String textEdit (String text){
-        String [] punctuation = {"!","#","$","%","&","'",")","(","*","+",",",".","/",":",";","<","=",">","?","@","<",
-                "[","\\","]","^","_","`","{","|","}","~", "\n", "\t", "  ","   ","--","---"};
-        for (String s : punctuation) {
-            text = text.replace(s, " ");
-        }
-        return text;
-    }
+//    private String textEdit (String text){
+//        String [] punctuation = {"!","#","$","%","&","'",")","(","*","+",",",".","/",":",";","<","=",">","?","@","<",
+//                "[","\\","]","^","_","`","{","|","}","~", "\n", "\t", "  ","   ","--","---"};
+//        for (String s : punctuation) {
+//            text = text.replace(s, " ");
+//        }
+//        return text;
+//    }
 
 }

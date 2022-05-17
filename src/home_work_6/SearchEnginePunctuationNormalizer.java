@@ -15,13 +15,12 @@ public class SearchEnginePunctuationNormalizer implements ISearchEngine{
 
     @Override
     public long search(String text, String word) {
+        text=textEdit(text);
         return searchEngine.search(text,word);
     }
 
-    @Override
-    public long searchAtFile(String filePath, String word) {
-        return searchEngine.searchAtFile(filePath,word);
+    private String textEdit(String text){
+        text = text.replaceAll("[\\p{Punct}&&[^-]]+|-{2,}|\n|\t"," ");
+        return text.replaceAll("\\s{2,}", " ");
     }
-
-
 }

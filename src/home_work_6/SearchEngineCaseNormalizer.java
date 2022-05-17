@@ -18,15 +18,6 @@ public class SearchEngineCaseNormalizer implements ISearchEngine {
 
     @Override
     public long search(String text, String word) {
-        if (searchEngine instanceof RegExSearch){
-            return searchEngine.search(text, word);
-        } else {
             return searchEngine.search(text.toLowerCase(Locale.ROOT),word.toLowerCase(Locale.ROOT));
-        }
-    }
-
-    @Override
-    public long searchAtFile(String filePath, String word) {
-        return searchEngine.searchAtFile(filePath, word.toLowerCase(Locale.ROOT));
     }
 }

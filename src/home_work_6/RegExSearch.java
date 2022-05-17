@@ -14,17 +14,6 @@ import java.util.regex.Pattern;
 public class RegExSearch implements ISearchEngine {
 
     /**
-     * метод считает совпадения заданной строки в переданном текстовом файле (в формате строки)
-     * @param filePath путь к текстовому файлу
-     * @param word строка, совпадения с которой необходимо найти
-     * @return количество совпадений строки
-     */
-    public long searchAtFile (String filePath, String word){
-        String text = readFileStrings(filePath);
-        return search(text,word);
-    }
-
-    /**
      * метод осуществляет поиск заданной строки в переданном тексте и возвращает количество совпадений
      * @param text тест в котором необходимо провести поиск
      * @param word строка, совпадения с которой нужно посчитать
@@ -33,8 +22,8 @@ public class RegExSearch implements ISearchEngine {
     @Override
     public long search(String text, String word) {
         long count = 0;
-        text = textEdit(text);
-        Pattern p = Pattern.compile(word, Pattern.CASE_INSENSITIVE&Pattern.UNICODE_CASE);
+       // text = textEdit(text);
+        Pattern p = Pattern.compile(word);
         Matcher m = p.matcher(text);
         while (m.find()) {
             count++;
@@ -59,16 +48,16 @@ public class RegExSearch implements ISearchEngine {
         return text;
     }
 
-    /**
-     * метод заменяет в переданной строке текста все знаки препинания (!"#$%&'()*+,./:;<=>?@[\]^_`{|}~
-     * кроме одинарного дефиса (-)), а также множественный пробел и множественный дефис (2 и более раз) на одинарный пробел
-     * @param text строка текста
-     * @return обработанная строка текста
-     */
-    private String textEdit (String text){
-        text = text.replaceAll("[\\p{Punct}&&[^-]]+|-{2,}|\n|\t"," ");
-        return text.replaceAll("\\s{2,}", " ");
-    }
+//    /**
+//     * метод заменяет в переданной строке текста все знаки препинания (!"#$%&'()*+,./:;<=>?@[\]^_`{|}~
+//     * кроме одинарного дефиса (-)), а также множественный пробел и множественный дефис (2 и более раз) на одинарный пробел
+//     * @param text строка текста
+//     * @return обработанная строка текста
+//     */
+//    private String textEdit (String text){
+//        text = text.replaceAll("[\\p{Punct}&&[^-]]+|-{2,}|\n|\t"," ");
+//        return text.replaceAll("\\s{2,}", " ");
+//    }
 
 
 }

@@ -20,37 +20,6 @@ public class WarAndPeaceMain {
         System.out.println("Топ " + topN + " самых употребляемых слов: " + book.topWords(filePath, topN));
 
         //Task 5
-//        EasySearch easySearch = new EasySearch();
-//        System.out.println("EasySearch");
-//        System.out.println("война: " +easySearch.searchAtFile(filePath, "война") + " раз");
-//        System.out.println("и: " + easySearch.searchAtFile(filePath, " и ") + " раз");
-//        System.out.println("мир: " +easySearch.searchAtFile(filePath,"мир") + " раз");
-//        System.out.println("----------------");
-//
-//        RegExSearch regExSearch = new RegExSearch();
-//        System.out.println("RegExSearch");
-//        System.out.println("война: " +regExSearch.searchAtFile(filePath, "война") + " раз");
-//        System.out.println("и: " + regExSearch.searchAtFile(filePath, " и ") + " раз");
-//        System.out.println("мир: " +regExSearch.searchAtFile(filePath,"мир") + " раз");
-//        System.out.println("----------------");
-//
-//        ISearchEngine searchEngine = new SearchEngineCaseNormalizer(new RegExSearch());
-//        System.out.println("SearchEngineCaseNormalizer - RegExSearch");
-//        System.out.println("война: " +searchEngine.searchAtFile(filePath, "ВОЙНА") + " раз");
-//        System.out.println("и: " + searchEngine.searchAtFile(filePath, " И ") + " раз");
-//        System.out.println("мир: " +searchEngine.searchAtFile(filePath,"МИР") + " раз");
-//        System.out.println("----------------");
-//
-//        searchEngine = new SearchEngineCaseNormalizer(new EasySearch());
-//        System.out.println("SearchEngineCaseNormalizer - EasySearch");
-//        System.out.println("война: " +searchEngine.searchAtFile(filePath, "ВОЙНА") + " раз");
-//        System.out.println("и: " + searchEngine.searchAtFile(filePath, " И ") + " раз");
-//        System.out.println("мир: " +searchEngine.searchAtFile(filePath,"МИР") + " раз");
-//        System.out.println("----------------");
-
-        System.out.println("Search()");
-        System.out.println("===================");
-
         EasySearch easySearch = new EasySearch();
         System.out.println("EasySearch");
         System.out.println("война: " +easySearch.search(text, "война") + " раз");
@@ -66,6 +35,20 @@ public class WarAndPeaceMain {
         System.out.println("----------------");
 
         ISearchEngine searchEngine = new SearchEngineCaseNormalizer(new RegExSearch());
+        System.out.println("SearchEngineCaseNormalizer - RegExSearch");
+        System.out.println("война: " +searchEngine.search(text, "ВОЙНА") + " раз");
+        System.out.println("и: " + searchEngine.search(text, " И ") + " раз");
+        System.out.println("мир: " +searchEngine.search(text,"МИР") + " раз");
+        System.out.println("----------------");
+
+        searchEngine = new SearchEngineCaseNormalizer(new EasySearch());
+        System.out.println("SearchEngineCaseNormalizer - EasySearch");
+        System.out.println("война: " +searchEngine.search(text, "ВОЙНА") + " раз");
+        System.out.println("и: " + searchEngine.search(text, " И ") + " раз");
+        System.out.println("мир: " +searchEngine.search(text,"МИР") + " раз");
+        System.out.println("----------------");
+
+        searchEngine = new SearchEngineCaseNormalizer(new RegExSearch());
         System.out.println("SearchEngineCaseNormalizer - RegExSearch");
         System.out.println("война: " +searchEngine.search(text, "ВОЙНА") + " раз");
         System.out.println("и: " + searchEngine.search(text, " И ") + " раз");
