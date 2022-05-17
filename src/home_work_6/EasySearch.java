@@ -30,7 +30,7 @@ public class EasySearch implements ISearchEngine {
             } else {
                 charAfter = text.charAt(startIndex + word.length());
             }
-            if (!Character.isLetterOrDigit(charBefore)&&!Character.isLetterOrDigit(charAfter)) {
+            if (!Character.isLetterOrDigit(charBefore)&&charBefore!='-'&&!Character.isLetterOrDigit(charAfter)&&charAfter!='-') {
                 count++;
             }
             startIndex = text.indexOf(word, startIndex + 1);

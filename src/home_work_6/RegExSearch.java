@@ -29,12 +29,12 @@ public class RegExSearch implements ISearchEngine {
             } else {
                 charBefore = text.charAt(m.start()-1);
             }
-            if (m.hitEnd()){
+            if (m.end()>text.length()-1){
                 charAfter = '!';
             } else {
                 charAfter = text.charAt(m.end());
             }
-            if (!Character.isLetterOrDigit(charBefore)&&!Character.isLetterOrDigit(charAfter)) {
+            if (!Character.isLetterOrDigit(charBefore)&&charBefore!='-'&&!Character.isLetterOrDigit(charAfter)&&charAfter!='-') {
                 count++;
             }
         }
