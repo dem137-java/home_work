@@ -3,6 +3,8 @@ package home_work_6;
 import home_work_6.api.ISearchEngine;
 import home_work_6.decorators.SearchEngineCaseNormalizer;
 import home_work_6.decorators.SearchEnginePunctuationNormalizer;
+import home_work_6.search_engines.EasySearch;
+import home_work_6.search_engines.RegExSearch;
 
 import java.io.IOException;
 import java.nio.file.Files;
