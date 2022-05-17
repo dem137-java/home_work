@@ -26,7 +26,7 @@ public class LibraryMain {
             System.out.println("Извините, директория не существует...");
         } else {
             File result = new File("C:/upload/Java/projects/JD1/home_work/src/home_work_6/library/result.txt");
-            try (FileWriter writer = new FileWriter(result, true)) {
+            try (FileWriter writer = new FileWriter(result, false)) {
                 int fileNo;
                 do {
                     System.out.println("Выберите файл из списка ниже, введите номер файла либо 0 для выхода: ");
