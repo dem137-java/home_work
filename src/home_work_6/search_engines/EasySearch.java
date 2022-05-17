@@ -2,19 +2,10 @@ package home_work_6.search_engines;
 
 import home_work_6.api.ISearchEngine;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
 /**
  * класс позволяет находить совпадения строки в тексте и определить количество таких совпаданий
  */
 public class EasySearch implements ISearchEngine {
-
-    public long searchAtFile (String filePath, String word){
-        String text = readFileStrings(filePath);
-        return search(text,word);
-    }
 
     /**
      * метод осуществляет поиск заданной строки в переданном тексте и возвращает количество совпадений
@@ -47,20 +38,4 @@ public class EasySearch implements ISearchEngine {
         return count;
     }
 
-    /**
-     * метод считывает файл и возвращает его в виде строки (Files.readString)
-     * @param filePath путь к файлу
-     * @return теств в виде строки
-     */
-    private String readFileStrings(String filePath) {
-        Path path = Path.of(filePath);
-        String text = "";
-        try {
-            text = Files.readString(path);
-        } catch (IOException e) {
-            System.out.println("Извините, возникла ошибка...");
-            e.printStackTrace();
-        }
-        return text;
-    }
 }
