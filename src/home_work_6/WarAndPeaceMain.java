@@ -10,6 +10,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/**
+ * класс для демонстрации результатов задания 2.1, 2.2 и 5
+ */
 public class WarAndPeaceMain {
     public static void main(String[] args) {
         String filePath = "/upload/Java/projects/JD1/home_work/src/home_work_6/text.txt";
