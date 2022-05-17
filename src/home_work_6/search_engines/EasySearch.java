@@ -1,14 +1,11 @@
-package home_work_6;
+package home_work_6.search_engines;
 
 import home_work_6.api.ISearchEngine;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 /**
- * класс позволяет осуществлять поиск заданного слова в тексте либо в текстовом файле
+ * класс позволяет находить совпадения строки в тексте и определить количество таких совпаданий
  */
-public class RegExSearch implements ISearchEngine {
+public class EasySearch implements ISearchEngine {
 
     /**
      * метод осуществляет поиск заданной строки в переданном тексте и возвращает количество совпадений
@@ -19,24 +16,24 @@ public class RegExSearch implements ISearchEngine {
     @Override
     public long search(String text, String word) {
         long count = 0;
-        Pattern p = Pattern.compile(word);
-        Matcher m = p.matcher(text);
-        while (m.find()) {
+        int startIndex = text.indexOf(word);
+        while (startIndex != -1) {
             char charBefore = 0;
             char charAfter = 0;
-            if (m.start()==0) {
+            if (startIndex==0) {
                 charBefore = '!';
             } else {
-                charBefore = text.charAt(m.start()-1);
+                charBefore = text.charAt(startIndex-1);
             }
-            if (m.end()>text.length()-1){
+            if (startIndex + word.length()>=text.length()) {
                 charAfter = '!';
             } else {
-                charAfter = text.charAt(m.end());
+                charAfter = text.charAt(startIndex + word.length());
             }
             if (!Character.isLetterOrDigit(charBefore)&&charBefore!='-'&&!Character.isLetterOrDigit(charAfter)&&charAfter!='-') {
                 count++;
             }
+            startIndex = text.indexOf(word, startIndex + 1);
         }
         return count;
     }
