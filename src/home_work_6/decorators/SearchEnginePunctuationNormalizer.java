@@ -1,9 +1,9 @@
-package home_work_6;
+package home_work_6.decorators;
 
 import home_work_6.api.ISearchEngine;
 
 public class SearchEnginePunctuationNormalizer implements ISearchEngine{
-    ISearchEngine searchEngine;
+    private ISearchEngine searchEngine;
 
     public SearchEnginePunctuationNormalizer(ISearchEngine searchEngine) {
         this.searchEngine = searchEngine;

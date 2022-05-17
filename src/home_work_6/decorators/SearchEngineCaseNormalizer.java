@@ -1,4 +1,4 @@
-package home_work_6;
+package home_work_6.decorators;
 
 import home_work_6.api.ISearchEngine;
 
@@ -6,7 +6,7 @@ import java.util.Locale;
 
 public class SearchEngineCaseNormalizer implements ISearchEngine {
 
-    ISearchEngine searchEngine;
+    private ISearchEngine searchEngine;
 
     public SearchEngineCaseNormalizer(ISearchEngine iSearchEngine) {
         this.searchEngine = iSearchEngine;
