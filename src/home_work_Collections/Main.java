@@ -31,20 +31,20 @@ public class Main {
 
         //заполняем и сортируем коллекции объектами Animal
         List<Animal> animalLinkedList = new LinkedList<>();
-        Utils.fillCollection(animalLinkedList,1_000_000,new AnimalSupplier());
+        Utils.fillCollection(animalLinkedList,1_000_000,new AnimalSupplier()); // заполняем коллекцию дженерик методом
         Utils.sortList(animalLinkedList, new ComparatorAnimalAge()); // сортируем коллекцию по возрасту животных
 
         List<Animal> animalArrayList = new ArrayList<>();
-        Utils.fillCollection(animalArrayList,1_00,new AnimalSupplier());
-        Utils.sortList(animalArrayList,new ComparatorAnimalAge().thenComparing(new ComparatorAnimalNick()));
+        Utils.fillCollection(animalArrayList,1_00,new AnimalSupplier());  // заполняем коллекцию дженерик методом
+        Utils.sortList(animalArrayList,new ComparatorAnimalAge().thenComparing(new ComparatorAnimalNick()));  // сортируем коллекцию по возрасту животных и кличке
 
         Set<Animal> animalHashSet = new HashSet<>();
-        Utils.fillCollection(animalHashSet,1_000_000,new AnimalSupplier());
+        Utils.fillCollection(animalHashSet,1_000_000,new AnimalSupplier()); // заполняем коллекцию дженерик методом
         // данную колекцию отсортировать нельзя
 
         NavigableSet<Animal> animalTreeSet = new TreeSet<>(new ComparatorAnimalHashCode());
-        Utils.fillCollection(animalTreeSet,1_00,new AnimalSupplier());
+        Utils.fillCollection(animalTreeSet,1_00,new AnimalSupplier());  // заполняем коллекцию дженерик методом
         animalTreeSet = Utils.sortTreeSet(animalTreeSet,new ComparatorAnimalAge().thenComparing(new ComparatorAnimalNick()
-                .thenComparing(new ComparatorAnimalHashCode())));
+                .thenComparing(new ComparatorAnimalHashCode())));   // сортируем коллекцию по возрасту животных и кличке
     }
 }
