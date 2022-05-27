@@ -50,9 +50,20 @@ public class Utils {
 //        set.addAll(personList);
 //    }
 
-    public static <T> NavigableSet <T> sortTreeSet (NavigableSet<T> set, Comparator<T> comparator){
+    public static <T> NavigableSet <T> sortTreeSet (NavigableSet<T> set, Comparator<T> comparator){ // Navigable для того чтобы не передали Set
         NavigableSet<T> tmpSet = new TreeSet<>(comparator);
         tmpSet.addAll(set);
         return tmpSet;
+    }
+
+    public static <T> void iterateCollection (Collection<T> collection){
+        Iterator<T> it = collection.iterator();
+        while (it.hasNext()){
+            it.next();
+        }
+    }
+
+    public static <T> void clearCollection(Collection<T> collection){
+        collection.clear();
     }
 }
