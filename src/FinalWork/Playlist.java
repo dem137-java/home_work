@@ -49,4 +49,13 @@ public class Playlist {
     public void setList(List<Song> list) {
         this.list = list;
     }
+
+    @Override
+    public String toString() {
+        return "Playlist{" +
+                "name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", list=" + list +
+                '}';
+    }
 }
